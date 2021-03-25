@@ -1,0 +1,156 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <!-- <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+    <!-- <ion-buttons slot="end">
+      <ion-menu-button color="medium"></ion-menu-button>
+    </ion-buttons> -->
+
+    <ion-title class="fz-16">Mon Parking</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content scroll="false">
+
+  <div style="height: 80px;">
+    <img src="/assets/img/{{ user.image || 'parkingicon' }}.jpg" style="height: 250px; width: 100%;" alt="" />
+  </div>
+
+  <div class="p-20">
+    <ion-list class="cshadow" lines="none">
+      <ion-item>
+        <h3 class="pt-20">{{ parking.name }}</h3>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <span style="font-size: 16px;color: #383838;">{{ user.address?.street }}</span><br>
+          <span style="font-size: 16px;color: #383838;">{{ user.address?.city }}, {{ user.address?.area }}</span>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="call-outline" color="success"></ion-icon>
+        <ion-label style="font-size: 16px;color: #383838; ">{{ user.phone }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-icon slot="start" name="mail-outline" color="dark"></ion-icon> -->
+        <ion-icon  slot="start" name="person-sharp" color="success"></ion-icon>
+        <ion-label style="font-size: 16px;color: #383838; ">{{ parking.manager}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <!-- <ion-icon slot="end" name="mail-outline" color="dark"></ion-icon>
+        <ion-label color="danger">{{ parking.manager}}</ion-label> -->
+        <ion-badge class="genric-message" slot="end" color="danger" mode="ios">{{ parking.price }}FcFa/Heure</ion-badge>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+  <ion-list class="p-20">
+    <ion-item-group class="cshadow">
+      <ion-item class="pb-20 pt-20" lines="none">
+        <div class="ion-text-justify">
+          <a class="left pb-5" style="font-size: 16px;color: #383838">Déscription</a>
+          {{ parking.description }}
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon *ngIf="parking.securitycamera" color="success" slot="end" name="checkmark-sharp"></ion-icon>
+        <ion-icon *ngIf="!parking.securitycamera" color="danger" slot="end" name="close-sharp"></ion-icon>
+        <ion-label>Camera de securite</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon *ngIf="parking.securityagent" color="success" slot="end" name="checkmark-sharp"></ion-icon>
+        <ion-icon *ngIf="!parking.securityagent" color="danger" slot="end" name="close-sharp"></ion-icon>
+        <ion-label>Agent de securité</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon *ngIf="parking.carwash" color="success" slot="end" name="checkmark-sharp"></ion-icon>
+        <ion-icon *ngIf="!parking.carwash" color="danger" slot="end" name="close-sharp"></ion-icon>
+        <ion-label>Lavage</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon *ngIf="parking.protectiveroof" color="success" slot="end" name="checkmark-sharp"></ion-icon>
+        <ion-icon *ngIf="!parking.protectiveroof" color="danger" slot="end" name="close-sharp"></ion-icon>
+        <ion-label>Toit de protection</ion-label>
+      </ion-item>
+  </ion-item-group>
+  </ion-list>
+  
+
+  <ion-list class="p-20">
+    <ion-item-group class="cshadow pb-20" >
+
+      <ion-item class="pt-20">
+        <ion-icon color="success" name="alarm"></ion-icon>
+        <ion-label>&nbsp;&nbsp; Horaires d'ouvertures</ion-label>
+      </ion-item>
+      <div *ngIf="parking?.planning?.monday?.checked">
+        <ion-item style="height: 33px;" lines="none">
+          <ion-label slot="start">{{ parking?.planning?.monday?.day }}</ion-label>
+          <ion-label><span style="color:gray;"> {{ parking?.planning?.monday?.open | date:'shortTime':'+0200':'fr' }} à
+              {{ parking?.planning?.monday?.close | date:'shortTime':'+0200':'fr' }}</span></ion-label>
+        </ion-item>
+      </div>
+      <div *ngIf="parking?.planning?.tuesday?.checked">
+        <ion-item style="height: 33px;" lines="none">
+          <ion-label slot="start">{{ parking?.planning?.tuesday?.day }}</ion-label>
+          <ion-label><span style="color:gray;"> {{ parking?.planning?.tuesday?.open | date:'shortTime':'+0200':'fr' }} à
+              {{ parking?.planning?.tuesday?.close | date:'shortTime':'+0200':'fr' }}</span></ion-label>
+        </ion-item>
+      </div>
+      <div *ngIf="parking?.planning?.wednesday?.checked">
+        <ion-item style="height: 33px;" lines="none">
+          <ion-label>{{ parking?.planning?.wednesday?.day }}</ion-label>
+          <ion-label slot="end"><span style="color:gray;"> {{ parking?.planning?.wednesday?.open |
+              date:'shortTime':'+0200':'fr' }} à {{ parking?.planning?.wednesday?.close | date:'shortTime':'+0200':'fr'
+              }}</span></ion-label>
+        </ion-item>
+      </div>
+      <div *ngIf="parking?.planning?.thursday?.checked">
+        <ion-item style="height: 33px;" lines="none">
+          <ion-label>{{ parking?.planning?.thursday?.day }}</ion-label>
+          <ion-label><span style="color:gray;"> {{ parking?.planning?.thursday?.open | date:'shortTime':'+0200':'fr' }}
+              à {{ parking?.planning?.thursday?.close | date:'shortTime':'+0200':'fr' }}</span></ion-label>
+        </ion-item>
+      </div>
+      <div *ngIf="parking?.planning?.friday?.checked">
+        <ion-item style="height: 33px;" lines="none">
+          <ion-label slot="start">{{ parking?.planning?.friday?.day }}</ion-label>
+          <ion-label><span style="color:gray;"> {{ parking?.planning?.friday?.open | date:'shortTime':'+0200':'fr' }} à
+              {{ parking?.planning?.friday?.close | date:'shortTime':'+0200':'fr' }}</span></ion-label>
+        </ion-item>
+      </div>
+      <div *ngIf="parking?.planning?.saturday?.checked">
+        <ion-item style="height: 33px;" lines="none">
+          <ion-label slot="start">{{ parking?.planning?.saturday?.day }}</ion-label>
+          <ion-label><span style="color:gray;"> {{ parking?.planning?.saturday?.open | date:'shortTime':'+0200':'fr' }}
+              à {{ parking?.planning?.saturday?.close | date:'shortTime':'+0200':'fr' }}</span></ion-label>
+        </ion-item>
+      </div>
+      <div *ngIf="parking?.planning?.sunday?.checked">
+        <ion-item style="height: 33px;" lines="none">
+          <ion-label slot="start">{{ parking?.planning?.sunday?.day }}</ion-label>
+          <ion-label><span style="color:gray;"> {{ parking?.planning?.sunday?.open | date:'shortTime':'+0200':'fr' }} à
+              {{ parking?.planning?.sunday?.close | date:'shortTime':'+0200':'fr' }}</span></ion-label>
+        </ion-item>
+      </div>
+    </ion-item-group>
+  </ion-list>
+
+
+  <!-- <div class="p-20  center">
+    <a   [routerLink]="['/parkings' ,id, 'check-step' ]" class="genric-btn primary circle">Faire une reservation</a>
+  </div> -->
+
+</ion-content>

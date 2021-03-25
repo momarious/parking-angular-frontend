@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title class="fz-16">Nos Parkings</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/map']">
+        <ion-icon name="map-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list class="p-20" color="light">
+    <ion-item-group *ngFor="let parking of parkings" [routerLink]="['/parkings', parking.id]" class="cshadow">
+
+    <ion-list 
+      class="ion-no-padding mb-20 resto">
+      <div>
+        <img src="/assets/img/{{parking.image || 'appicon' }}.jpg" style="height: 125px; width: 100%;" alt="" />
+      </div>
+      <ion-item lines="none">
+        <ion-label>
+          
+          <h2>{{ parking.name }}</h2>
+  
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+
+  </ion-item-group>
+</ion-list>
+</ion-content>

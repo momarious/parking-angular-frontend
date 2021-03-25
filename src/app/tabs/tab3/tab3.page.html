@@ -1,0 +1,72 @@
+<ion-toolbar color="dark">
+  <ion-buttons slot="end">
+    <ion-button (click)="presentPopover($event)">
+      <ion-icon name="ellipsis-horizontal-sharp"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title class="center"><span class="fz-18">Mon profil</span> </ion-title>
+  
+</ion-toolbar>
+
+<ion-content>
+  <div class="gray-bg">
+    <div class="center pt-60">
+      <ion-avatar style="width: 100px; height: 100px;">
+        <img src="/assets/img/{{ user.image || 'appicon'}}.jpg" alt="" />
+      </ion-avatar>
+    </div>
+    <div class="center pt-40 pb-40">
+      <h4 class="fz-16">{{ user.firstname }} {{ user.lastname }}</h4>
+    </div>
+  </div>
+
+  <ion-list class="ion-padding">
+
+    <ion-item-group class="p-20 cshadow">
+      <ion-item>
+        <ion-label>Informations personnelles</ion-label>
+      </ion-item>
+      <ion-item-group>
+        <ion-item>
+          <ion-icon color="success" slot="start" name="location-outline"></ion-icon>
+          <ion-label>{{ address?.street }}
+            <ion-label>{{ address?.city }}, {{ address?.area}} 
+            </ion-label>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="mail-outline" color="success"></ion-icon>
+          <ion-label>{{ user.email}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" color="success" name="call-sharp"></ion-icon>
+          <ion-label>{{ user.phone}}</ion-label>
+        </ion-item>
+      </ion-item-group>
+    </ion-item-group>
+
+    <br />
+
+    <ion-item-group class="p-20 cshadow">
+      <ion-item>
+        <ion-icon slot="start" color="success" name="car-outline"></ion-icon>
+        <ion-label>Informations sur le vehicule</ion-label>
+      </ion-item>
+      <ion-item-group>
+        <ion-item lines="none">
+          <ion-label>Marque</ion-label>
+          <ion-text slot="end">
+            {{ vehicle?.brand }}
+          </ion-text>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label>Matricule</ion-label>
+          <ion-text slot="end">
+            {{ vehicle?.registration }}
+          </ion-text>
+        </ion-item>
+      </ion-item-group>
+    </ion-item-group>
+  </ion-list>
+
+</ion-content>

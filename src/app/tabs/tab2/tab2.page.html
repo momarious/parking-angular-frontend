@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-toolbar color="dark">
+    <ion-title class="fz-16">Mes reservations</ion-title>
+    <ion-buttons color="light" slot="end">
+      <ion-button (click)="refresh()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+
+</ion-header>
+
+<ion-content>
+  <ion-list class="p-20">
+    <div *ngFor="let reservation of reservations">
+    <ion-item-group class="cshadow" >
+      <ion-item lines="none" color="light">
+        <ion-label>Code: &nbsp;{{ reservation.id }}</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <ion-label>
+            {{ reservation.parkingname }}
+            <ion-label style="font-size: 16px;color: #383838; "> {{ reservation.startDate  | date: 'd MMMM y':'+0200':'fr' }}</ion-label>
+          </ion-label>
+          <p> {{ reservation.startTime }}
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label slot="start">{{ reservation.hours}} heures </ion-label>
+        <!-- <ion-label style="font-weight: 600;" color="danger">{{ reservation.price}} FcFa</ion-label> -->
+        <ion-text color="danger" slot="end">
+          {{ reservation.price}} FcFa        </ion-text>
+
+      </ion-item>
+      <ion-item lines="none" *ngIf="reservation.carwashing">
+        <ion-label slot="start">lavage</ion-label>
+        <ion-icon color="success" slot="end" name="checkmark-outline"></ion-icon>
+      </ion-item>
+    </ion-item-group>
+    <br/>
+
+  </div>
+  </ion-list>
+</ion-content>
+
