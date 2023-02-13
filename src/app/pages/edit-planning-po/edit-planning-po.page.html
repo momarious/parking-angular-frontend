@@ -1,0 +1,113 @@
+<ion-header lines="none">
+  <ion-toolbar lines="none" color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="fz-16"> Modifier les horaires</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list class="ion-padding">
+    <ion-item-group class="cshadow">
+      <!--  -->
+      <ion-list class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-label> Lundi</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="monday.checked"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="monday.checked">
+          <ion-datetime slot="start" display-format="HH:mm" placeholder="Ouverture" [(ngModel)]="monday.open"
+            value="{{ monday.open }}"></ion-datetime>
+          <ion-datetime slot="end" display-format="HH:mm" placeholder="Fermeture" [(ngModel)]="monday.close"
+            value="{{ monday.close }}"></ion-datetime>
+        </ion-item>
+      </ion-list>
+      <!--  -->
+      <ion-list class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-label> Mardi</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="tuesday.checked"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="tuesday.checked">
+          <ion-datetime slot="start" display-format="HH:mm" placeholder="Ouverture" [(ngModel)]="tuesday.open"
+            value="{{ tuesday.open }}"></ion-datetime>
+          <ion-datetime slot="end" display-format="HH:mm" placeholder="Fermeture" [(ngModel)]="tuesday.close"
+            value="{{ tuesday.close }}"></ion-datetime>
+        </ion-item>
+      </ion-list>
+      <!--  -->
+      <ion-list class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-label> Mercredi</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="wednesday.checked"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="wednesday.checked">
+          <ion-datetime slot="start" display-format="HH:mm" placeholder="Ouverture" [(ngModel)]="wednesday.open"
+            value="{{ wednesday.open }}"></ion-datetime>
+          <ion-datetime slot="end" display-format="HH:mm" placeholder="Fermeture" [(ngModel)]="wednesday.close"
+            value="{{ wednesday.close }}"></ion-datetime>
+        </ion-item>
+      </ion-list>
+      <!--  -->
+      <ion-list class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-label> Jeudi </ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="thursday.checked"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="thursday.checked">
+          <ion-datetime slot="start" display-format="HH:mm" placeholder="Ouverture" [(ngModel)]="thursday.open"
+            value="{{ thursday.open }}"></ion-datetime>
+          <ion-datetime slot="end" display-format="HH:mm" placeholder="Fermeture" [(ngModel)]="thursday.close"
+            value="{{ thursday.close }}"></ion-datetime>
+        </ion-item>
+      </ion-list>
+      <!--  -->
+      <ion-list class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-label> Vendredi</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="friday.checked"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="friday.checked">
+          <ion-datetime slot="start" display-format="HH:mm" placeholder="Ouverture" [(ngModel)]="friday.open"
+            value="{{ friday.open }}"></ion-datetime>
+          <ion-datetime slot="end" display-format="HH:mm" placeholder="Fermeture" [(ngModel)]="friday.close"
+            value="{{ friday.close }}"></ion-datetime>
+        </ion-item>
+      </ion-list>
+      <!--  -->
+      <ion-list class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-label> Samedi</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="saturday.checked"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="saturday.checked">
+          <ion-datetime slot="start" display-format="HH:mm" placeholder="Ouverture" [(ngModel)]="saturday.open"
+            value="{{ saturday.open }}"></ion-datetime>
+          <ion-datetime slot="end" display-format="HH:mm" placeholder="Fermeture" [(ngModel)]="saturday.close"
+            value="{{ saturday.close }}"></ion-datetime>
+        </ion-item>
+      </ion-list>
+      <!--  -->
+      <ion-list class="ion-no-padding">
+        <ion-item lines="none">
+          <ion-label> Dimanche</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="sunday.checked"></ion-checkbox>
+        </ion-item>
+        <ion-item *ngIf="sunday.checked">
+          <ion-datetime slot="start" display-format="HH:mm" placeholder="Ouverture" [(ngModel)]="sunday.open"
+            value="{{ sunday.open }}"></ion-datetime>
+          <ion-datetime slot="end" display-format="HH:mm" placeholder="Fermeture" [(ngModel)]="sunday.close"
+            value="{{ sunday.close }}"></ion-datetime>
+        </ion-item>
+      </ion-list>
+      <!--  -->
+    </ion-item-group>
+
+    <div class="p-20 center">
+      <a (click)="submit()" class="genric-btn info radius">Enregistrer</a>
+    </div>
+
+  </ion-list>
+</ion-content>

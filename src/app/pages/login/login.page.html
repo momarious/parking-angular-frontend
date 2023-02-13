@@ -1,0 +1,37 @@
+<ion-content>
+  <div class="p-40">
+    <div class="center pt-40">
+      <img width="100" src="assets/icon/favicon.png" alt="" />
+    </div>
+    <div class="center pt-40">
+      <h4>Authentification</h4>
+    </div>
+    <ion-item-group class="pt-40">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mot de passe</ion-label>
+        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+      <div class="pt-40 center">
+        <a (click)="login()" class="genric-btn info circle">Se connecter</a>
+      </div>
+      <br />
+      <p class="center" style="font-size: 16px;color: #383838; ">
+        Vous êtes nouveau ?
+        <a [routerLink]="['/register-co']">&nbsp;&nbsp;Créer un compte</a>
+      </p>
+
+      <!-- 
+      <p class="center" style="font-size: 16px;color: #383838; ">
+        Vous avez un compte ?
+        <a [routerLink]="[ '/login']">&nbsp;&nbsp;Se connecter</a>
+      </p> -->
+
+
+
+    </ion-item-group>
+  </div>
+</ion-content>

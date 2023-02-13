@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+    <ion-title class="fz-16">Choisir le créneau de stationnement </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item class="ion-no-padding" lines="none">
+    <ion-buttons slot="end">
+      <ion-button color="success" (click)="back()">
+        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+      </ion-button>
+
+      <ion-button color="success" (click)="next()">
+        <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-item class="ion-no-padding" lines="none">
+      <ion-title class="fz-16">{{ viewTitle }}</ion-title>
+    </ion-item>
+  </ion-item>
+
+  <ion-card class="ion-no-padding">
+
+    <calendar locale="fr-FR" [eventSource]="eventSource"       [currentDate]="calendar.currentDate" (onCurrentDateChanged)="onCurrentDateChanged($event)"
+       (onTitleChanged)="onViewTitleChanged($event)"
+      (onTimeSelected)="onTimeSelected($event)" [showEventDetail]="false">
+    </calendar>
+  </ion-card>
+
+
+  <!-- <ion-list class="ion-padding"> -->
+    <ion-item-group class="ion-padding">
+      <ion-item>
+        <ion-icon slot="start" color="success" name="card-sharp"></ion-icon>
+        <ion-label style="font-size: 16px;color: #383838; ">Resérvation du {{ display | date: 'd MMMM y':'+0200':'fr' }}
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime [(ngModel)]="time" display-format="HH:mm"></ion-datetime>
+      </ion-item>
+    </ion-item-group>
+  <!-- </ion-list> -->
+  <ion-button (click)="onClick(time)" expand="block" fill="clear" shape="round">
+    
+  </ion-button>
+
+  <p class="center" style="font-size: 16px; ">
+    <a (click)="onClick(time)"
+      >Faire une resérvation</a
+    >
+  </p>
+
+  <!-- <ion-item class="ion-no-padding" lines="none">
+    <ion-label>Votre panier est vide !!!</ion-label>
+  </ion-item>
+
+  <ion-item class="ion-no-padding" lines="none" >
+    <ion-label>Votre panier est vide !!!</ion-label>
+  </ion-item> -->
+
+</ion-content>

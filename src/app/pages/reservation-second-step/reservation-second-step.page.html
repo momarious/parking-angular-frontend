@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="fz-16">Faire une reservation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-list class="p-20">
+
+    <ion-item-group class="cshadow">
+      <ion-item>
+        <ion-icon color="success" slot="start" name="time-sharp"></ion-icon>
+        <ion-label>Début du stationnement</ion-label>
+      </ion-item>
+      <ion-item-group>
+        <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-text style="font-size: 16px;color: #383838; ">
+            {{ reservation.startDate | date: 'd MMMM y':'+0200':'fr' }}
+          </ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-label>Heure</ion-label>
+          <ion-datetime [(ngModel)]="reservation.startTime" display-format="HH:mm"></ion-datetime>
+        </ion-item>
+      </ion-item-group>
+    </ion-item-group>
+
+    <br>
+
+    <ion-item-group class="cshadow">
+      <ion-item>
+        <ion-icon slot="start" color="success" name="cash-outline"></ion-icon>
+        <ion-label>Tarif de stationnenement</ion-label>
+      </ion-item>
+      <ion-item-group>
+        <ion-list>
+          <ion-item lines="none">
+            <ion-label class="ion-no-padding">
+              Nombre d'heures
+              <p>{{ hours }} x {{ parking.price}} FCFA</p>
+            </ion-label>
+          <!-- </ion-item> -->
+          <!--  -->
+          <!-- <ion-item> -->
+            <ion-buttons slot="end">
+              <ion-button slot="end" (click)="decreaseQuantity(hours)">
+                <ion-icon slot="icon-only" name="remove-circle" color="warning"></ion-icon>
+              </ion-button>
+              <label> {{ hours }} </label>
+              <ion-button (click)="increaseQuantity(hours)">
+                <ion-icon slot="icon-only" name="add-circle" color="warning"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </ion-list>
+        <ion-item *ngIf="parking.carwash">
+          <ion-label>Lavage
+            <p>1000 FCFA</p>
+          </ion-label>
+          <ion-checkbox  [(ngModel)]="carwashing" (ionChange)="changeCheckState(carwashing)"></ion-checkbox>
+        </ion-item>
+      </ion-item-group>
+      <ion-item class="ion-padding" lines="none">
+        <ion-label>Total</ion-label>
+        <ion-label slot="end">{{ total() }} FCFA</ion-label>
+      </ion-item>
+    </ion-item-group>
+<!--  -->
+<p *ngIf="hoursNull" class="center" style="font-size: 16px;color: #e5091c; ">
+  Choisir le nombre d'heures de stationnement
+</p>
+
+    <!--  -->
+    <div class="p-20  center">
+      <a (click)="submit()" class="genric-btn info circle">Faire une reservation</a>
+    </div>
+
+  </ion-list>
+</ion-content>

@@ -1,0 +1,121 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import "assets/scss/main.scss";
+
+ion-toolbar,
+ion-header {
+  --min-height: 65px;
+}
+
+.center,
+.center-column,
+.top,
+.right,
+.bottom,
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center-column {
+  flex-direction: column;
+}
+.top {
+  align-items: flex-start;
+}
+.right {
+  justify-content: flex-end;
+}
+.bottom {
+  align-items: flex-end;
+}
+.left {
+  justify-content: flex-start;
+}
+
+.cal-modal {
+  --height: 80%;
+  padding: 25px;
+}
+
+.e50 {
+  color: #e5091c;
+  font-weight: bold;
+}
+
+// 
+.link {
+  color: #38a4ff;
+  font-size: 15px;
+}
+
+.price {
+  color: #f0542c;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.lowercase {
+  // text-transform: lowercase;
+  text-transform: none;
+  font-weight: 100;
+}
+
+.custom-label {
+  color: #eb445a;
+}
+
+.costum-img {
+  border-radius: 50%;
+  height: 170px;
+  width: 170px;
+  border: 2px solid #4cd3e3;
+}
+
+.custom-camera-fab {
+  position: absolute;
+  top: 190px;
+  left: 225px;
+}
+
+.text-black { color: #000; }
+.fz-16       {font-size: 16px;}
+
+.custom-title {
+  color: #383838;
+  font-size: 20px;
+  font-weight: bold;
+
+}
+// 
+
+.cshadow {
+  // border-radius: 10px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+
+}
